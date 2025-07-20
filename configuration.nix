@@ -76,11 +76,17 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "video"
     ];
     # packages = with pkgs; [
     #   #  thunderbird
     # ];
   };
+
+#   # Izinkan user di grup 'video' untuk mengatur brightness
+#   services.udev.extraRules = ''
+#     SUBSYSTEM=="backlight", ACTION=="add", KERNEL=="*", RUN+="/bin/chgrp video /sys/class/backlight/%k/brightness", RUN+="/bin/chmod g+w /sys/class/backlight/%k/brightness"
+#   '';
 
   # Install firefox.
   programs.firefox.enable = true;
@@ -110,7 +116,7 @@
     micro
     vscode
     kitty
-    brightnessctl
+    # brightnessctl
     fastfetch
     nixfmt-rfc-style
     microsoft-edge
@@ -145,21 +151,5 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
-
-#   #   Izinkan user mengatur brightness
-#   services.udev.extraRules = ''
-#     ACTION=="add", SUBSYSTEM=="backlight", RUN+="${pkgs.brightnessctl}/bin/brightnessctl set 20%"
-#     ACTION=="add", SUBSYSTEM=="backlight", GROUP="video", MODE="0660"
-#   '';
-
-  #   services.xserver.videoDrivers = [ "nvidia" ];
-
-  #   hardware.nvidia = {
-  #     modesetting.enable = true;
-  #     powerManagement.enable = true;
-  #     powerManagement.finegrained = true;
-  #     open = false; # Gunakan driver proprietary, bukan open-source (Nouveau)
-  #     nvidiaSettings = true;
-  #   };
 
 }
