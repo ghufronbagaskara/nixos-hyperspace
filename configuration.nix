@@ -28,7 +28,7 @@
   nix.settings.experimental-features = [
     "nix-commands"
     "flakes"
-  ]
+  ];
 
   # Enable networking
   networking.networkmanager.enable = true;
