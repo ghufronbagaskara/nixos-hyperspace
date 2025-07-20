@@ -1,4 +1,4 @@
-{ ... }:
+{ inputs, pkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -15,7 +15,11 @@
   imports = [
     # For home-manager
     inputs.spicetify-nix.homeManagerModules.default
-  ]
+  ];
+
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
 
   # Spicetify
   programs.spicetify =
@@ -41,7 +45,7 @@
 
     theme = spicePkgs.themes.catppuccin;
     colorScheme = "mocha";
-  }
+  };
 
 
   # This value determines the Home Manager release that your configuration is
