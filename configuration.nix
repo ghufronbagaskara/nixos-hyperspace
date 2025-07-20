@@ -25,11 +25,6 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  nix.settings.experimental-features = [
-    "nix-commands"
-    "flakes"
-  ];
-
   # Enable networking
   networking.networkmanager.enable = true;
 
@@ -119,6 +114,7 @@
     fastfetch
     nixfmt-rfc-style
     microsoft-edge
+    spicetify-cli
   ];
 
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
